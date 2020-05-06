@@ -1,0 +1,1 @@
+# domoticz-spotify-plugin
