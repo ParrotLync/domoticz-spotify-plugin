@@ -137,6 +137,13 @@ class BasePlugin:
         if playback is not None:
             volume = playback.device.volume
             Devices[SPOTVOLUME].Update(2, str(volume))
+            devices = self.spotify.get_devices()
+            for device in devices:
+                if device.id == playback.device.id:
+                    level = (devices.index(device) + 1) * 10
+                    Devices[SPOTDEVICE].Update(1, str(level))
+        elif playback is None:
+            Devices[SPOTDEVICE].Update(0, 'Off')
 
         # Update device selector
         devices = self.spotify.get_devices()
