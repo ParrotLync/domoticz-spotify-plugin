@@ -102,7 +102,7 @@ class SpotifyConnection:
         Domoticz.Debug("Retrieving current playback.")
         response = self._request("GET", "/me/player")
         if response.status_code == 200:
-            if response.json() is None:
+            if response.content is None:
                 return None
             return CurrentPlayback(response.json())
 
